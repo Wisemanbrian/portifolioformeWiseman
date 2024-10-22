@@ -146,51 +146,35 @@ burgerMenu(); // Call the burger menu function
 
 	// scroll
 	var scrollWindow = function() {
-		$(window).scroll(function() {
-			var $w = $(this),
-				st = $w.scrollTop(),
-				navbar = $('.ftco_navbar'),
-				sd = $('.js-scroll-wrap');
+		// Cache the navbar and scroll wrap elements for better performance
+		var navbar = $('.ftco_navbar');
+		var sd = $('.js-scroll-wrap');
 	
-			// Only apply effects if the scroll position is beyond the hero section
-			if (st > $('.hero-section').outerHeight()) {
-				if (st > 150) {
-					if (!navbar.hasClass('scrolled')) {
-						navbar.addClass('scrolled'); // Add scrolled class
-					}
-				}
-				if (st < 150) {
-					if (navbar.hasClass('scrolled')) {
-						navbar.removeClass('scrolled sleep'); // Remove scrolled class
-					}
-				}
-				if (st > 350) {
-					if (!navbar.hasClass('awake')) {
-						navbar.addClass('awake'); // Add awake class
-					}
-					if (sd.length > 0) {
-						sd.addClass('sleep'); // Add sleep class to scroll wrap
-					}
-				}
-				if (st < 350) {
-					if (navbar.hasClass('awake')) {
-						navbar.removeClass('awake');
-						navbar.addClass('sleep'); // Add sleep class to navbar
-					}
-					if (sd.length > 0) {
-						sd.removeClass('sleep'); // Remove sleep class from scroll wrap
-					}
+		$(window).on('scroll', function() {
+			var st = $(this).scrollTop(); // Get current scroll position
+	
+			// Check if scroll position is greater than 150px
+			if (st > 150) {
+				navbar.addClass('scrolled'); // Add 'scrolled' class
+			} else {
+				navbar.removeClass('scrolled sleep'); // Remove 'scrolled' class
+			}
+	
+			// Check if scroll position is greater than 350px
+			if (st > 350) {
+				navbar.addClass('awake'); // Add 'awake' class
+				if (sd.length > 0) {
+					sd.addClass('sleep'); // Add 'sleep' class to scroll wrap
 				}
 			} else {
-				// If scrolled back to hero section, ensure navbar is reset
-				navbar.removeClass('scrolled awake sleep'); // Reset classes
-				if (sd.length > 0) {
-					sd.removeClass('sleep'); // Ensure scroll wrap is not sleeping
-				}
+				navbar.removeClass('awake'); // Remove 'awake' class
+				sd.removeClass('sleep'); // Remove 'sleep' class from scroll wrap
 			}
 		});
 	};
-	scrollWindow(); // Call the scrollWindow function
+	
+	// Call the scrollWindow function to activate the behavior
+	scrollWindow();
 	
 	
 

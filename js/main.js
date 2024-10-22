@@ -146,44 +146,52 @@ burgerMenu(); // Call the burger menu function
 
 	// scroll
 	var scrollWindow = function() {
-		$(window).scroll(function(){
+		$(window).scroll(function() {
 			var $w = $(this),
-					st = $w.scrollTop(),
-					navbar = $('.ftco_navbar'),
-					sd = $('.js-scroll-wrap');
-
-			if (st > 150) {
-				if ( !navbar.hasClass('scrolled') ) {
-					navbar.addClass('scrolled');	
+				st = $w.scrollTop(),
+				navbar = $('.ftco_navbar'),
+				sd = $('.js-scroll-wrap');
+	
+			// Only apply effects if the scroll position is beyond the hero section
+			if (st > $('.hero-section').outerHeight()) {
+				if (st > 150) {
+					if (!navbar.hasClass('scrolled')) {
+						navbar.addClass('scrolled'); // Add scrolled class
+					}
 				}
-			} 
-			if (st < 150) {
-				if ( navbar.hasClass('scrolled') ) {
-					navbar.removeClass('scrolled sleep');
+				if (st < 150) {
+					if (navbar.hasClass('scrolled')) {
+						navbar.removeClass('scrolled sleep'); // Remove scrolled class
+					}
 				}
-			} 
-			if ( st > 350 ) {
-				if ( !navbar.hasClass('awake') ) {
-					navbar.addClass('awake');	
+				if (st > 350) {
+					if (!navbar.hasClass('awake')) {
+						navbar.addClass('awake'); // Add awake class
+					}
+					if (sd.length > 0) {
+						sd.addClass('sleep'); // Add sleep class to scroll wrap
+					}
 				}
-				
-				if(sd.length > 0) {
-					sd.addClass('sleep');
+				if (st < 350) {
+					if (navbar.hasClass('awake')) {
+						navbar.removeClass('awake');
+						navbar.addClass('sleep'); // Add sleep class to navbar
+					}
+					if (sd.length > 0) {
+						sd.removeClass('sleep'); // Remove sleep class from scroll wrap
+					}
 				}
-			}
-			if ( st < 350 ) {
-				if ( navbar.hasClass('awake') ) {
-					navbar.removeClass('awake');
-					navbar.addClass('sleep');
-				}
-				if(sd.length > 0) {
-					sd.removeClass('sleep');
+			} else {
+				// If scrolled back to hero section, ensure navbar is reset
+				navbar.removeClass('scrolled awake sleep'); // Reset classes
+				if (sd.length > 0) {
+					sd.removeClass('sleep'); // Ensure scroll wrap is not sleeping
 				}
 			}
 		});
 	};
-	scrollWindow();
-
+	scrollWindow(); // Call the scrollWindow function
+	
 	
 
 	var counter = function() {

@@ -9688,7 +9688,7 @@ textarea.form-control {
   }
   .navbar {
     position: relative;
-    z-index: 10; /* or any value higher than overlapping elements */
+    z-index: 2000; /* or any value higher than overlapping elements */
 }
 @media (max-width: 768px) {
   .navbar-collapse {

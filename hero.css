@@ -1,0 +1,7 @@
+body{
+    overflow-x: hidden;
+}
+
+.hero{
+    z-index: -1;
+}

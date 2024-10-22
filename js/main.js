@@ -43,24 +43,35 @@
 
 
    // Burger Menu
-	var burgerMenu = function() {
+	// Burger Menu
+var burgerMenu = function() {
 
-		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
+    $('body').on('click', '.js-fh5co-nav-toggle', function(event) {
+        event.preventDefault(); // Prevent default action
 
-			event.preventDefault();
+        // Toggle the active class on the toggle button
+        $(this).toggleClass('active'); 
 
-			if ( $('#ftco-nav').is(':visible') ) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');	
-			}
+        // Check if the navigation menu is visible and toggle its display
+        $('#ftco-nav').toggle(); 
+    });
 
-			
-			
-		});
+    // Close the menu when clicking outside of it
+    $(document).on('click', function(event) {
+        var $target = $(event.target); // Get the clicked element
 
-	};
-	burgerMenu();
+        // Check if the clicked element is not the nav toggle or part of the nav
+        if (!$target.closest('.js-fh5co-nav-toggle').length && 
+            !$target.closest('#ftco-nav').length) {
+            // Remove active class and hide the nav if it's currently visible
+            $('.js-fh5co-nav-toggle').removeClass('active');
+            $('#ftco-nav').hide(); // Hide the navigation menu
+        }
+    });
+};
+burgerMenu(); // Call the burger menu function
+
+	
 
 
 	var onePageClick = function() {

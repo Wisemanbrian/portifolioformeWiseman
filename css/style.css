@@ -278,7 +278,7 @@ progress {
 
 [type="search"] {
   outline-offset: -2px;
-  -webkit-appearance: none; }
+  -webkit-appearance:none; }
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -3425,7 +3425,20 @@ input[type="button"].btn-block {
 .tab-content > .active {
   display: block; }
 
-
+.navbar {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem; }
   .navbar > .container,
   .navbar > .container-fluid {
     display: -webkit-box;
@@ -9669,8 +9682,3 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
-    .navbar-collapse {
-      max-height: 300px; /* Adjust based on your needs */
-      overflow-y: auto;  /* Allows scrolling */
-  }
-  

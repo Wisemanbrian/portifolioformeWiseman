@@ -1,4 +1,20 @@
-body{
+html{
     overflow-x: hidden;
 }
+
+.navbar-toggler-icon {
+    background-image: none; /* Remove default image */
+}
+
+.navbar-toggler-icon::before {
+    content: '\f0c9'; /* Font Awesome hamburger icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 1.5em; /* Adjust size */
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon::before {
+    content: '\f00d'; /* Font Awesome X icon */
+}
+
 

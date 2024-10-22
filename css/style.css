@@ -1557,7 +1557,7 @@ pre {
   .table-responsive-md {
     display: block;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch; }
     .table-responsive-md > .table-bordered {
       border: 0; } }
@@ -1861,7 +1861,7 @@ textarea.form-control {
 .invalid-tooltip {
   position: absolute;
   top: 100%;
-  z-index: 5;
+  z-index: -5;
   display: none;
   max-width: 100%;
   padding: 0.25rem 0.5rem;

@@ -145,7 +145,7 @@ burgerMenu(); // Call the burger menu function
 	});
 
 	// scroll
-	var scrollWindow = function() {
+ var scrollWindow = function() {
 		// Cache the navbar and scroll wrap elements for better performance
 		var navbar = $('.ftco_navbar');
 		var sd = $('.js-scroll-wrap');
